@@ -313,7 +313,7 @@ function Home() {
 
                     <div className="profile">
                         <h3>Pritam Kumar Das</h3>
-                        <p>PHP • Java • MERN Developer</p>
+                        <p>Java • MERN Developer</p>
                     </div>
 
                 </div>
