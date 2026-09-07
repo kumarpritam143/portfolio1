@@ -249,7 +249,7 @@ function Home() {
                     </h1>
 
                     <div className="role">
-                        PHP Developer • Java Learner • AI Enthusiast
+                        Java Learner • AI Enthusiast
                     </div>
 
                     <p className="desc">
