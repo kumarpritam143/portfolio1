@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { projectsData } from "../data/portfolioData";
 import PageMeta from "../components/shared/PageMeta";
 import SectionHeader from "../components/shared/SectionHeader";
@@ -9,13 +10,14 @@ import {
   GithubIcon,
   ExternalLinkIcon,
   CheckIcon,
+  ArrowRightIcon,
 } from "../components/shared/Icons";
 
 const categories = [
   "All",
-  "Java & Spring",
-  "PHP & Laravel",
-  "MERN Stack",
+  "AI / ML",
+  "Full Stack",
+  "Simulation & Science",
 ];
 
 export default function Projects() {
@@ -23,22 +25,22 @@ export default function Projects() {
 
   const filteredProjects = selectedCategory === "All"
     ? projectsData
-    : projectsData.filter((p) => p.category === selectedCategory);
+    : projectsData.filter((p) => p.category.toLowerCase().includes(selectedCategory.toLowerCase()));
 
   return (
     <>
       <PageMeta
-        title="Projects & Code Portfolio · Alex Morgan"
-        description="Explore production-grade software applications built with Core Java, Spring Boot, PHP 8, Laravel, and the MERN stack by Senior Software Engineer Alex Morgan."
+        title="Projects · 7 Full Stack & AI Applications"
+        description="Explore 7 production projects by Pritam Kumar Das: AptiMaster, AI Cover Letter Generator, AI Developer Assistant, NASA Space Apps Asteroid Simulator, No-Code Form Builder, EDA Reveal, and Interview AI."
       />
 
       {/* Page Header */}
       <section className="py-14 sm:py-16 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
-            badge="PORTFOLIO GALLERY"
-            title="Projects &amp; Architectures"
-            subtitle="Explore real-world software applications demonstrating clean architecture, microservices, database optimization, and intuitive frontend UI."
+            badge="PROJECT PORTFOLIO"
+            title="All 7 Featured Engineering Projects"
+            subtitle="Explore real-world software applications built across the MERN stack, Core Java, PHP, AI integrations, data analytics, and physics simulation."
           />
         </div>
       </section>
@@ -49,18 +51,22 @@ export default function Projects() {
           
           {/* Filter Pills */}
           <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setSelectedCategory(cat)}
-                className={`filter-btn ${selectedCategory === cat ? "active" : ""}`}
-              >
-                {cat}
-                {cat === "All" && ` (${projectsData.length})`}
-                {cat !== "All" && ` (${projectsData.filter((p) => p.category === cat).length})`}
-              </button>
-            ))}
+            {categories.map((cat) => {
+              const count = cat === "All"
+                ? projectsData.length
+                : projectsData.filter((p) => p.category.toLowerCase().includes(cat.toLowerCase())).length;
+
+              return (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`filter-btn ${selectedCategory === cat ? "active" : ""}`}
+                >
+                  {cat} ({count})
+                </button>
+              );
+            })}
           </div>
 
           {/* Project Cards Grid */}
@@ -89,7 +95,9 @@ export default function Projects() {
                 <div className="p-6 flex-1 flex flex-col justify-between">
                   <div>
                     <h3 className="text-lg font-bold text-slate-900 mb-1">
-                      {project.title}
+                      <Link to={`/projects/${project.id}`} className="hover:text-blue-600 transition-colors">
+                        {project.title}
+                      </Link>
                     </h3>
                     <p className="text-xs font-semibold text-blue-600 mb-3">
                       {project.tagline}
@@ -98,10 +106,10 @@ export default function Projects() {
                       {project.description}
                     </p>
 
-                    {/* Architectural Highlights */}
+                    {/* Key Feature Highlights */}
                     <div className="mb-4">
-                      <span className="text-xs uppercase font-semibold tracking-wider text-slate-400 block mb-2">
-                        Key Engineering Highlights:
+                      <span className="text-[10px] uppercase font-semibold tracking-wider text-slate-400 block mb-2">
+                        Key Capabilities:
                       </span>
                       <ul className="space-y-1.5 text-xs text-slate-600">
                         {project.features.slice(0, 2).map((feat, fIdx) => (
@@ -126,25 +134,46 @@ export default function Projects() {
                   </div>
 
                   {/* Card Actions */}
-                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-700 hover:text-blue-600 transition-colors"
+                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-3">
+                      {project.githubUrl ? (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-xs font-semibold text-slate-700 hover:text-blue-600 transition-colors"
+                          title="View on GitHub"
+                        >
+                          <GithubIcon size={15} />
+                          <span>Code</span>
+                        </a>
+                      ) : (
+                        <span className="text-xs text-slate-400">Code on request</span>
+                      )}
+
+                      {project.demoUrl ? (
+                        <a
+                          href={project.demoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors"
+                          title="Live Demo"
+                        >
+                          <span>Live</span>
+                          <ExternalLinkIcon size={12} />
+                        </a>
+                      ) : (
+                        <span className="text-[11px] text-slate-400">Demo pending</span>
+                      )}
+                    </div>
+
+                    <Link
+                      to={`/projects/${project.id}`}
+                      className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-700 hover:underline"
                     >
-                      <GithubIcon size={15} />
-                      <span>GitHub Repo</span>
-                    </a>
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 transition-colors"
-                    >
-                      <span>Live Demo</span>
-                      <ExternalLinkIcon size={13} />
-                    </a>
+                      <span>Details</span>
+                      <ArrowRightIcon size={12} />
+                    </Link>
                   </div>
 
                 </div>
@@ -153,12 +182,6 @@ export default function Projects() {
             ))}
           </div>
 
-          {filteredProjects.length === 0 && (
-            <div className="text-center py-12 text-slate-500">
-              No projects found in this category.
-            </div>
-          )}
-
         </div>
       </section>
 
@@ -166,22 +189,22 @@ export default function Projects() {
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="text-2xl font-bold text-slate-900">
-            Looking for more repositories and source code?
+            Explore All Repositories on GitHub
           </h3>
           <p className="mt-3 text-slate-600 max-w-xl mx-auto">
-            Check out my GitHub profile for open-source experiments, algorithms in Core Java, Laravel starter kits, and full-stack boilerplates.
+            Check out open-source repositories, algorithmic solutions, and project source files on my GitHub profile.
           </p>
           <div className="mt-6 flex justify-center gap-4">
             <Button
-              href="https://github.com"
+              href="https://github.com/kumarpritam143"
               external
               variant="secondary"
               icon={GithubIcon}
             >
-              Explore GitHub Profile
+              github.com/kumarpritam143
             </Button>
             <Button to="/contact" variant="primary">
-              Discuss a Project
+              Contact Pritam
             </Button>
           </div>
         </div>

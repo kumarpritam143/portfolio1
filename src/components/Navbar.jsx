@@ -9,6 +9,7 @@ const navLinks = [
   { name: "About", path: "/about" },
   { name: "Experience", path: "/experience" },
   { name: "Education", path: "/education" },
+  { name: "Certifications", path: "/certifications" },
   { name: "Projects", path: "/projects" },
   { name: "Achievements", path: "/achievements" },
   { name: "Contact", path: "/contact" },
@@ -29,7 +30,11 @@ export default function Navbar() {
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   const handleDownloadResume = () => {
-    alert("Resume download triggered. In production, this links directly to your actual resume PDF.");
+    if (personalInfo.hasRealResume) {
+      window.open(personalInfo.resumeUrl, "_blank");
+    } else {
+      alert("Resume PDF will be downloadable as soon as 'resume.pdf' is placed in the public folder. You can reach Pritam directly at " + personalInfo.email);
+    }
   };
 
   return (
@@ -44,7 +49,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Brand Logo */}
           <Link to="/" onClick={closeMobileMenu} className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-base shadow-sm group-hover:bg-blue-700 transition-colors">
+            <div className="w-10 h-10 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-sm shadow-sm group-hover:bg-blue-700 transition-colors">
               {personalInfo.initials}
             </div>
             <div className="flex flex-col">
@@ -52,20 +57,20 @@ export default function Navbar() {
                 {personalInfo.name}
               </span>
               <span className="text-xs text-slate-500 font-medium tracking-wide">
-                Full Stack Software Engineer
+                {personalInfo.designation}
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+          <nav className="hidden xl:flex items-center gap-1">
             {navLinks.map((link) => (
               <NavLink
                 key={link.path}
                 to={link.path}
                 end={link.path === "/"}
                 className={({ isActive }) =>
-                  `px-3 py-2 text-sm font-medium rounded-md transition-colors relative ${
+                  `px-2.5 py-1.5 text-xs font-medium rounded-md transition-colors relative ${
                     isActive
                       ? "text-blue-600 font-semibold"
                       : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
@@ -76,7 +81,7 @@ export default function Navbar() {
                   <>
                     <span>{link.name}</span>
                     {isActive && (
-                      <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-blue-600 rounded-full" />
+                      <span className="absolute bottom-0 left-2 right-2 h-0.5 bg-blue-600 rounded-full" />
                     )}
                   </>
                 )}
@@ -107,7 +112,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex items-center gap-2 xl:hidden">
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -122,7 +127,7 @@ export default function Navbar() {
 
       {/* Mobile Navigation Drawer */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden border-b border-slate-200 bg-white shadow-xl animate-fadeIn">
+        <div className="xl:hidden border-b border-slate-200 bg-white shadow-xl animate-fadeIn">
           <div className="px-4 pt-3 pb-6 space-y-1">
             {navLinks.map((link) => (
               <NavLink
@@ -131,7 +136,7 @@ export default function Navbar() {
                 end={link.path === "/"}
                 onClick={closeMobileMenu}
                 className={({ isActive }) =>
-                  `block px-3 py-2.5 rounded-lg text-base font-medium transition-colors ${
+                  `block px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                     isActive
                       ? "bg-blue-50 text-blue-600 font-semibold"
                       : "text-slate-700 hover:bg-slate-50"

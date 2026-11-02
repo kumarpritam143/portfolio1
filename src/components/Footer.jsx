@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { personalInfo } from "../data/portfolioData";
-import { GithubIcon, LinkedinIcon, TwitterIcon, MailIcon, ArrowUpRightIcon } from "./shared/Icons";
+import { GithubIcon, LinkedinIcon, MailIcon, ArrowUpRightIcon, GlobeIcon } from "./shared/Icons";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -20,7 +20,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-slate-600 text-sm leading-relaxed max-w-sm">
-              Senior Full Stack Software Engineer crafting scalable enterprise backends in Core Java &amp; PHP, and modern web applications with the MERN stack.
+              Software Developer crafting full-stack applications in Core Java, PHP, and the MERN stack with modern AI-driven utilities.
             </p>
             <div className="flex items-center gap-2 pt-1">
               <span className="relative flex h-2.5 w-2.5">
@@ -30,6 +30,9 @@ export default function Footer() {
               <span className="text-xs font-medium text-slate-700">
                 {personalInfo.availability}
               </span>
+            </div>
+            <div className="text-xs text-slate-500">
+              📍 {personalInfo.location}
             </div>
           </div>
 
@@ -56,17 +59,22 @@ export default function Footer() {
               </li>
               <li>
                 <Link to="/education" className="text-slate-600 hover:text-blue-600 transition-colors">
-                  Education &amp; Certs
+                  Education
+                </Link>
+              </li>
+              <li>
+                <Link to="/certifications" className="text-slate-600 hover:text-blue-600 transition-colors">
+                  Certifications
                 </Link>
               </li>
               <li>
                 <Link to="/projects" className="text-slate-600 hover:text-blue-600 transition-colors">
-                  Featured Projects
+                  All 7 Projects
                 </Link>
               </li>
               <li>
                 <Link to="/achievements" className="text-slate-600 hover:text-blue-600 transition-colors">
-                  Hackathons &amp; Milestones
+                  Hackathons &amp; 10K+ Community
                 </Link>
               </li>
               <li>
@@ -80,26 +88,26 @@ export default function Footer() {
           {/* Technology Pillars */}
           <div>
             <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-900 mb-4">
-              Core Expertise
+              Core Stack
             </h3>
             <ul className="space-y-2.5 text-sm text-slate-600">
               <li className="flex items-center gap-1.5">
-                <span className="text-blue-600 font-bold">•</span> Core Java (JVM, Spring Boot)
+                <span className="text-blue-600 font-bold">•</span> Core Java &amp; OOP Foundations
               </li>
               <li className="flex items-center gap-1.5">
-                <span className="text-blue-600 font-bold">•</span> PHP 8.x &amp; Laravel Ecosystem
+                <span className="text-blue-600 font-bold">•</span> MERN Stack (React, Node, Mongo)
               </li>
               <li className="flex items-center gap-1.5">
-                <span className="text-blue-600 font-bold">•</span> MERN Architecture
+                <span className="text-blue-600 font-bold">•</span> PHP &amp; Web Architectures
               </li>
               <li className="flex items-center gap-1.5">
-                <span className="text-blue-600 font-bold">•</span> PostgreSQL, MySQL &amp; Redis
+                <span className="text-blue-600 font-bold">•</span> AI/ML Integration &amp; EDA
               </li>
               <li className="flex items-center gap-1.5">
-                <span className="text-blue-600 font-bold">•</span> REST APIs &amp; Microservices
+                <span className="text-blue-600 font-bold">•</span> SQL, MySQL &amp; PostgreSQL
               </li>
               <li className="flex items-center gap-1.5">
-                <span className="text-blue-600 font-bold">•</span> Docker &amp; Cloud CI/CD
+                <span className="text-blue-600 font-bold">•</span> Git, GitHub &amp; Developer Tools
               </li>
             </ul>
           </div>
@@ -117,7 +125,7 @@ export default function Footer() {
                 className="inline-flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors"
               >
                 <LinkedinIcon size={16} />
-                <span>LinkedIn (10K+ Community)</span>
+                <span>LinkedIn (10K+ Network)</span>
                 <ArrowUpRightIcon size={12} className="opacity-70" />
               </a>
               <a
@@ -131,13 +139,13 @@ export default function Footer() {
                 <ArrowUpRightIcon size={12} className="opacity-70" />
               </a>
               <a
-                href={personalInfo.social.twitter}
+                href={personalInfo.website}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors"
               >
-                <TwitterIcon size={16} />
-                <span>Twitter / X</span>
+                <GlobeIcon size={16} />
+                <span>buildwithpritam.in</span>
                 <ArrowUpRightIcon size={12} className="opacity-70" />
               </a>
               <a
@@ -145,7 +153,7 @@ export default function Footer() {
                 className="inline-flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors"
               >
                 <MailIcon size={16} />
-                <span>{personalInfo.email}</span>
+                <span className="truncate">{personalInfo.email}</span>
               </a>
             </div>
           </div>
@@ -153,11 +161,11 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-10 mt-10 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© {currentYear} {personalInfo.name}. Designed &amp; Built with pure minimal aesthetics.</p>
+          <p>© {currentYear} {personalInfo.name}. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <span>High Performance Web Architecture</span>
+            <span>Suresh Gyan Vihar University · B.Tech CSE</span>
             <span>•</span>
-            <span>Clean Code Standards</span>
+            <span>SGPA: 8.2</span>
           </div>
         </div>
       </div>

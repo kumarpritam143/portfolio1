@@ -11,6 +11,7 @@ import {
   MapPinIcon,
   LinkedinIcon,
   CheckIcon,
+  ArrowRightIcon,
 } from "../components/shared/Icons";
 
 export default function Achievements() {
@@ -19,39 +20,39 @@ export default function Achievements() {
   return (
     <>
       <PageMeta
-        title="Hackathons & Achievements · Alex Morgan"
-        description="Hackathon awards, open-source milestones, technical achievements, and LinkedIn 10,000+ developer community reach by Alex Morgan."
+        title="Hackathons & Achievements · 10K+ Community"
+        description="Pritam Kumar Das - 10,000+ LinkedIn follower network, NASA International Space Apps Challenge participant, and technical software milestones."
       />
 
       {/* Page Header */}
       <section className="py-14 sm:py-16 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
-            badge="RECOGNITION & IMPACT"
-            title="Hackathons, Achievements & Community"
-            subtitle="Competitive hackathon honors, industry awards, and technical thought leadership across the software engineering community."
+            badge="MILESTONES & RECOGNITION"
+            title="Hackathons, Achievements &amp; Community"
+            subtitle="Competitive coding initiatives, NASA Space Apps simulation development, and a 10K+ developer network on LinkedIn."
           />
         </div>
       </section>
 
       {/* =================================================================
-          LINKEDIN 10K+ MILESTONE SECTION (FEATURE HIGHLIGHT)
+          PROMINENT 10K+ LINKEDIN COMMUNITY MILESTONE
           ================================================================= */}
       <section className="py-16 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="linkedin-milestone-card">
+          <div className="linkedin-milestone-card bg-white">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               
               <div className="lg:col-span-8 space-y-4">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold">
                   <LinkedinIcon size={14} />
-                  <span>LINKEDIN COMMUNITY MILESTONE</span>
+                  <span>PROMINENT COMMUNITY MILESTONE</span>
                 </div>
 
-                <h3 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-                  10,000+ Software Engineers &amp; Leaders
-                </h3>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                  10,000+ Tech Followers on LinkedIn
+                </h2>
 
                 <p className="text-base text-slate-600 leading-relaxed max-w-2xl">
                   {linkedinMilestone.description}
@@ -76,37 +77,37 @@ export default function Achievements() {
                     variant="primary"
                     icon={LinkedinIcon}
                   >
-                    Connect on LinkedIn
+                    Connect with Pritam on LinkedIn (10K+)
                   </Button>
                 </div>
               </div>
 
-              {/* Stat Column */}
-              <div className="lg:col-span-4 bg-slate-50 rounded-xl p-6 border border-slate-200 space-y-4 text-center sm:text-left">
+              {/* Stats Box */}
+              <div className="lg:col-span-4 bg-slate-50 rounded-xl p-6 border border-slate-200 space-y-5 text-center sm:text-left">
                 <div className="border-b border-slate-200 pb-4">
                   <div className="text-4xl font-extrabold text-blue-600">
                     {linkedinMilestone.followerCount}
                   </div>
                   <div className="text-xs uppercase font-semibold text-slate-500 mt-1">
-                    Direct Network Followers
+                    Organic Followers
                   </div>
                 </div>
 
                 <div className="border-b border-slate-200 pb-4">
                   <div className="text-2xl font-bold text-slate-900">
-                    {linkedinMilestone.networkReach}
+                    Active Tech Network
                   </div>
                   <div className="text-xs uppercase font-semibold text-slate-500 mt-1">
-                    Audience Reach &amp; Views
+                    Engineers, Students &amp; Mentors
                   </div>
                 </div>
 
                 <div>
-                  <div className="text-2xl font-bold text-emerald-600">
-                    {linkedinMilestone.engagementRate}
+                  <div className="text-xl font-bold text-slate-800">
+                    Full-Stack &amp; AI
                   </div>
                   <div className="text-xs uppercase font-semibold text-slate-500 mt-1">
-                    Organic Engagement Rate
+                    Core Technical Discussions
                   </div>
                 </div>
               </div>
@@ -118,14 +119,14 @@ export default function Achievements() {
       </section>
 
       {/* =================================================================
-          HACKATHON COMPETITIONS
+          HACKATHON PARTICIPATION CARDS
           ================================================================= */}
       <section className="py-16 sm:py-20 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
-            badge="COMPETITIVE CODING"
-            title="Hackathon Victories &amp; Podiums"
-            subtitle="Rapid prototyping, architectural execution under pressure, and high-impact software delivery in 24 to 48-hour sprints."
+            badge="COMPETITIONS & CHALLENGES"
+            title="Hackathon Projects &amp; Participation"
+            subtitle="Rapid engineering sprints and high-impact submissions including the NASA Space Apps Challenge."
             className="mb-12"
           />
 
@@ -191,14 +192,14 @@ export default function Achievements() {
       </section>
 
       {/* =================================================================
-          GENERAL ACHIEVEMENTS & RECOGNITION
+          GENERAL ACHIEVEMENTS
           ================================================================= */}
       <section className="py-16 sm:py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
-            badge="RECOGNITION"
-            title="Milestones &amp; Continuous Growth"
-            subtitle="Consistency in algorithms, open-source dedication, and technical community presentations."
+            badge="HONORS & MILESTONES"
+            title="Technical Highlights &amp; Standing"
+            subtitle="Academic consistency, portfolio breadth, and active online technical presence."
             className="mb-12"
           />
 
@@ -208,7 +209,7 @@ export default function Achievements() {
                 <div className="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-4 border border-blue-100">
                   <AwardIcon size={20} />
                 </div>
-                <Badge variant="slate" size="sm" className="mb-2">
+                <Badge variant="blue" size="sm" className="mb-2">
                   {ach.badge}
                 </Badge>
                 <h4 className="text-base font-bold text-slate-900 mb-1">
@@ -225,7 +226,7 @@ export default function Achievements() {
           </div>
 
           <div className="mt-14 text-center">
-            <Button to="/contact" variant="primary" size="lg">
+            <Button to="/contact" variant="primary" size="lg" icon={ArrowRightIcon} iconPosition="right">
               Connect Regarding Opportunities
             </Button>
           </div>

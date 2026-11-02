@@ -9,10 +9,10 @@ import {
   MapPinIcon,
   GithubIcon,
   LinkedinIcon,
-  TwitterIcon,
   CheckCircleIcon,
   ArrowRightIcon,
   ArrowUpRightIcon,
+  GlobeIcon,
 } from "../components/shared/Icons";
 
 export default function Contact() {
@@ -20,7 +20,7 @@ export default function Contact() {
     name: "",
     email: "",
     subject: "",
-    serviceType: "Full-Time Role",
+    serviceType: "Software Developer Role",
     message: "",
   });
 
@@ -71,7 +71,7 @@ export default function Contact() {
 
     setIsSubmitting(true);
 
-    // Simulate realistic asynchronous network request
+    // Simulate realistic asynchronous submission
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
@@ -79,26 +79,26 @@ export default function Contact() {
         name: "",
         email: "",
         subject: "",
-        serviceType: "Full-Time Role",
+        serviceType: "Software Developer Role",
         message: "",
       });
-    }, 700);
+    }, 600);
   };
 
   return (
     <>
       <PageMeta
-        title="Contact · Alex Morgan"
-        description="Get in touch with Senior Full Stack Software Engineer Alex Morgan for full-time software engineering roles, enterprise Java/PHP consulting, and architectural guidance."
+        title="Contact · Pritam Kumar Das"
+        description="Get in touch with Pritam Kumar Das, Software Developer from Bhagalpur, Bihar, India. Reach out via email at kumardaspritam972@gmail.com, GitHub, or LinkedIn."
       />
 
       {/* Page Header */}
       <section className="py-14 sm:py-16 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
-            badge="GET IN TOUCH"
-            title="Let's Connect &amp; Collaborate"
-            subtitle="I am always interested in discussing new engineering opportunities, enterprise architecture projects, or mentoring."
+            badge="CONNECT"
+            title="Get in Touch with Pritam"
+            subtitle="I am actively open to Software Developer roles, full-stack projects, and technical collaborations."
           />
         </div>
       </section>
@@ -113,10 +113,10 @@ export default function Contact() {
               
               <div>
                 <h3 className="text-2xl font-bold text-slate-900 tracking-tight">
-                  Contact Information
+                  Direct Contact Channels
                 </h3>
                 <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-                  Feel free to reach out directly via email, phone, or connect on LinkedIn and GitHub. I respond promptly to inquiries.
+                  Have an engineering opportunity, a project to discuss, or want to connect? Reach out via email or connect on LinkedIn and GitHub.
                 </p>
               </div>
 
@@ -131,27 +131,10 @@ export default function Contact() {
                   </div>
                   <div>
                     <div className="text-xs uppercase font-semibold text-slate-400">
-                      Direct Email
+                      Primary Email
                     </div>
                     <div className="text-sm font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">
                       {personalInfo.email}
-                    </div>
-                  </div>
-                </a>
-
-                <a
-                  href={`tel:${personalInfo.phone.replace(/[^0-9+]/g, '')}`}
-                  className="contact-info-card group"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                    <PhoneIcon size={18} />
-                  </div>
-                  <div>
-                    <div className="text-xs uppercase font-semibold text-slate-400">
-                      Phone / Mobile
-                    </div>
-                    <div className="text-sm font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">
-                      {personalInfo.phone}
                     </div>
                   </div>
                 </a>
@@ -162,19 +145,71 @@ export default function Contact() {
                   </div>
                   <div>
                     <div className="text-xs uppercase font-semibold text-slate-400">
-                      Base Location
+                      Location
                     </div>
                     <div className="text-sm font-semibold text-slate-900">
                       {personalInfo.location}
                     </div>
                   </div>
                 </div>
+
+                <a
+                  href={personalInfo.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-info-card group"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    <GlobeIcon size={18} />
+                  </div>
+                  <div>
+                    <div className="text-xs uppercase font-semibold text-slate-400">
+                      Personal Website
+                    </div>
+                    <div className="text-sm font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">
+                      buildwithpritam.in
+                    </div>
+                  </div>
+                </a>
+
+                {personalInfo.phone ? (
+                  <a
+                    href={`tel:${personalInfo.phone.replace(/[^0-9+]/g, '')}`}
+                    className="contact-info-card group"
+                  >
+                    <div className="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                      <PhoneIcon size={18} />
+                    </div>
+                    <div>
+                      <div className="text-xs uppercase font-semibold text-slate-400">
+                        Phone / Mobile
+                      </div>
+                      <div className="text-sm font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">
+                        {personalInfo.phone}
+                      </div>
+                    </div>
+                  </a>
+                ) : (
+                  <div className="contact-info-card">
+                    <div className="w-10 h-10 rounded-lg bg-slate-50 text-slate-400 flex items-center justify-center shrink-0 border border-slate-200">
+                      <PhoneIcon size={18} />
+                    </div>
+                    <div>
+                      <div className="text-xs uppercase font-semibold text-slate-400">
+                        Phone Verification
+                      </div>
+                      <div className="text-sm text-slate-600">
+                        Available upon request / on interview scheduling
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Social Profiles */}
               <div className="p-6 bg-white border border-slate-200 rounded-xl space-y-4">
                 <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                  Connect on Social &amp; Code Platforms
+                  Developer Profiles &amp; Community
                 </h4>
                 
                 <div className="grid grid-cols-2 gap-3 text-sm">
@@ -185,7 +220,7 @@ export default function Contact() {
                     className="flex items-center gap-2 p-2.5 rounded-lg border border-slate-100 hover:border-blue-200 hover:bg-blue-50 text-slate-700 hover:text-blue-600 transition-colors"
                   >
                     <LinkedinIcon size={16} />
-                    <span className="font-medium text-xs">LinkedIn</span>
+                    <span className="font-medium text-xs">LinkedIn (10K+)</span>
                     <ArrowUpRightIcon size={12} className="ml-auto opacity-60" />
                   </a>
 
@@ -196,18 +231,18 @@ export default function Contact() {
                     className="flex items-center gap-2 p-2.5 rounded-lg border border-slate-100 hover:border-blue-200 hover:bg-blue-50 text-slate-700 hover:text-blue-600 transition-colors"
                   >
                     <GithubIcon size={16} />
-                    <span className="font-medium text-xs">GitHub</span>
+                    <span className="font-medium text-xs">GitHub Repos</span>
                     <ArrowUpRightIcon size={12} className="ml-auto opacity-60" />
                   </a>
 
                   <a
-                    href={personalInfo.social.twitter}
+                    href={personalInfo.website}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 p-2.5 rounded-lg border border-slate-100 hover:border-blue-200 hover:bg-blue-50 text-slate-700 hover:text-blue-600 transition-colors"
                   >
-                    <TwitterIcon size={16} />
-                    <span className="font-medium text-xs">Twitter / X</span>
+                    <GlobeIcon size={16} />
+                    <span className="font-medium text-xs">Website</span>
                     <ArrowUpRightIcon size={12} className="ml-auto opacity-60" />
                   </a>
 
@@ -216,7 +251,7 @@ export default function Contact() {
                     className="flex items-center gap-2 p-2.5 rounded-lg border border-slate-100 hover:border-blue-200 hover:bg-blue-50 text-slate-700 hover:text-blue-600 transition-colors"
                   >
                     <MailIcon size={16} />
-                    <span className="font-medium text-xs">Mail Inbox</span>
+                    <span className="font-medium text-xs">Send Email</span>
                     <ArrowUpRightIcon size={12} className="ml-auto opacity-60" />
                   </a>
                 </div>
@@ -225,7 +260,7 @@ export default function Contact() {
               {/* Status Note */}
               <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-100 text-xs text-emerald-800 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
-                <span>Typical response time: Within 24 business hours.</span>
+                <span>Response time: Prompt response within 24 hours.</span>
               </div>
 
             </div>
@@ -243,7 +278,7 @@ export default function Contact() {
                       Message Received!
                     </h3>
                     <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-                      Thank you for getting in touch. I have received your message and will review your inquiry shortly.
+                      Thank you for reaching out. I have received your message and will get back to you shortly at {formData.email || "your email"}.
                     </p>
                     <div className="pt-4">
                       <Button
@@ -258,10 +293,10 @@ export default function Contact() {
                   <form onSubmit={handleSubmit} noValidate className="space-y-6">
                     <div className="border-b border-slate-100 pb-4">
                       <h3 className="text-xl font-bold text-slate-900">
-                        Send a Direct Message
+                        Send a Message
                       </h3>
                       <p className="text-xs text-slate-500 mt-1">
-                        Fill out the details below and I'll get back to you promptly.
+                        Fill out the form below to connect directly with Pritam Kumar Das.
                       </p>
                     </div>
 
@@ -276,7 +311,7 @@ export default function Contact() {
                           name="name"
                           value={formData.name}
                           onChange={handleChange}
-                          placeholder="e.g. Jane Doe"
+                          placeholder="e.g. John Doe"
                           className={`form-input ${errors.name ? "error" : ""}`}
                         />
                         {errors.name && <span className="form-error">{errors.name}</span>}
@@ -292,7 +327,7 @@ export default function Contact() {
                           name="email"
                           value={formData.email}
                           onChange={handleChange}
-                          placeholder="jane@company.com"
+                          placeholder="john@example.com"
                           className={`form-input ${errors.email ? "error" : ""}`}
                         />
                         {errors.email && <span className="form-error">{errors.email}</span>}
@@ -311,11 +346,10 @@ export default function Contact() {
                           onChange={handleChange}
                           className="form-select"
                         >
-                          <option value="Full-Time Role">Full-Time Role / Hiring</option>
-                          <option value="Consulting / Architecture">Consulting &amp; System Architecture</option>
-                          <option value="Contract / Freelance">Contract Web Development</option>
-                          <option value="Technical Mentorship">Technical Mentorship / Speaking</option>
-                          <option value="General Inquiry">General Inquiry</option>
+                          <option value="Software Developer Role">Software Developer Role / Hiring</option>
+                          <option value="Full-Stack Web Project">Full-Stack Web Project</option>
+                          <option value="Technical Collaboration">Technical Collaboration / Hackathon</option>
+                          <option value="General Inquiry">General Inquiry / Mentorship</option>
                         </select>
                       </div>
 
@@ -329,7 +363,7 @@ export default function Contact() {
                           name="subject"
                           value={formData.subject}
                           onChange={handleChange}
-                          placeholder="e.g. Senior Backend Role at TechCorp"
+                          placeholder="e.g. Software Developer Position"
                           className={`form-input ${errors.subject ? "error" : ""}`}
                         />
                         {errors.subject && <span className="form-error">{errors.subject}</span>}
@@ -346,7 +380,7 @@ export default function Contact() {
                         rows="5"
                         value={formData.message}
                         onChange={handleChange}
-                        placeholder="Tell me about your team, tech stack, timeline, or requirements..."
+                        placeholder="Please share details about your team, project, or requirements..."
                         className={`form-textarea ${errors.message ? "error" : ""}`}
                       ></textarea>
                       {errors.message && <span className="form-error">{errors.message}</span>}
@@ -362,7 +396,7 @@ export default function Contact() {
                         icon={ArrowRightIcon}
                         iconPosition="right"
                       >
-                        {isSubmitting ? "Sending Message..." : "Submit Message"}
+                        {isSubmitting ? "Sending..." : "Send Message"}
                       </Button>
                     </div>
                   </form>

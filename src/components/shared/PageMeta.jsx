@@ -1,10 +1,11 @@
 import { useEffect } from "react";
+import { personalInfo } from "../../data/portfolioData";
 
 export default function PageMeta({ title, description }) {
   useEffect(() => {
     const fullTitle = title 
-      ? `${title} | Alex Morgan · Senior Full Stack Software Engineer`
-      : "Alex Morgan | Senior Full Stack Software Engineer (Java, PHP, MERN)";
+      ? `${title} | ${personalInfo.name} · ${personalInfo.title}`
+      : `${personalInfo.name} | ${personalInfo.title} (Java, PHP, MERN & AI)`;
     
     document.title = fullTitle;
 
@@ -16,4 +17,3 @@ export default function PageMeta({ title, description }) {
 
   return null;
 }
-
